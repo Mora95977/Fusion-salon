@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salón de Belleza y Barbería Fusión</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="assets/logo.jpg" alt="Logo Barbería Fusión">
+        <h1>Salón de Belleza y Barbería Fusión</h1>
+    </header>
+
+    <div id="holidayNotice">
+        <button id="closeNotice">X</button>
+        <p><strong>Horario:</strong><br>
+        Lunes a Jueves 8am - 6:30pm<br>
+        Viernes y Sábado 8am - 8pm<br>
+        Domingo: <strong>CERRADO</strong></p>
+    </div>
+
+    <section>
+        <p><strong>Llegar 10 minutos antes de la cita</strong></p>
+        <form id="appointmentForm">
+            <input type="text" id="name" placeholder="Nombre" required>
+
+            <select id="service" required>
+                <option disabled selected>Selecciona un servicio</option>
+                <option>Corte clásico</option>
+                <option>Corte Moderno</option>
+                <option>Corte y barba</option>
+                <option>Estilismo</option>
+                <option>Pestañas</option>
+                <option>Manicura</option>
+                <option>Pedicura</option>
+            </select>
+
+            <select id="barber" required>
+                <option disabled selected>Selecciona un barbero/estilista</option>
+                <option>Pablo Barbershop</option>
+                <option>Axel Barbershop</option>
+                <option>Joel Barbershop</option>
+                <option>Yendry Mora (Estilista)</option>
+            </select>
+
+            <input type="date" id="date" required>
+
+            <div class="time-container">
+                <select id="hour" required></select>
+                <select id="minute" required>
+                    <option>00</option><option>15</option><option>30</option><option>45</option>
+                </select>
+                <select id="ampm" required>
+                    <option>AM</option><option>PM</option>
+                </select>
+            </div>
+
+            <button type="submit">Confirmar Cita</button>
+        </form>
+    </section>
+
+    <section id="adminSection">
+        <h2>Administración</h2>
+        <button id="btnExcel">Generar Reporte</button>
+        <button id="btnBorrar">Borrar Citas</button>
+        <table id="citasTable">
+            <thead>
+                <tr><th>Nombre</th><th>Servicio</th><th>Barbero</th><th>Fecha</th><th>Hora</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <script src="js/funciones.js"></script>
+</body>
+</html>
