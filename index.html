@@ -1,78 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salón de Belleza y Barbería Fusión</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-</head>
-<body>
-    <header>
-        <img src="logo.jpg" alt="Logo Barbería Fusión">
-        <h1>Salón de Belleza y Barbería Fusión</h1>
-    </header>
+  <meta charset="UTF-8">
+  <title>Salón de Belleza y Barbería Fusión</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div id="holidayNotice">
-        <button id="closeNotice">X</button>
-        <p><strong>Horario:</strong><br>
-        Lunes a Jueves 8am - 6:30pm<br>
-        Viernes y Sábado 8am - 8pm<br>
-        Domingo: <strong>CERRADO</strong></p>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .logo {
+      width: 150px;
+      height: auto;
+    }
+    .titulo {
+      color: #b30059;
+      margin-top: 20px;
+    }
+    .formulario {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    .cerrado {
+      color: red;
+    }
+    footer {
+      margin-top: 40px;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container text-center">
+    <!-- Logo -->
+    <img src="logo.jpg" alt="Logo del salón" class="logo mt-4">
+
+    <!-- Título -->
+    <h1 class="titulo">Salón de Belleza y Barbería Fusión</h1>
+
+    <!-- Horarios -->
+    <p class="mt-3">
+      <strong>Horario:</strong><br>
+      Lunes a Jueves: 8:00 a.m. - 6:30 p.m.<br>
+      Viernes y Sábado: 8:00 a.m. - 8:00 p.m.<br>
+      Domingo: <span class="cerrado fw-bold">CERRADO</span>
+    </p>
+
+    <p class="fw-bold">🚨 Llegar 10 minutos antes de la cita</p>
+
+    <!-- Formulario -->
+    <div class="formulario mx-auto col-lg-6 col-md-8 col-sm-10">
+      <form>
+        <div class="mb-3">
+          <label for="servicio" class="form-label">Selecciona un servicio</label>
+          <select class="form-select" id="servicio">
+            <option selected disabled>Elige una opción</option>
+            <option>Corte clásico</option>
+            <option>Corte Moderno</option>
+            <option>Corte y barba</option>
+            <option>Estilismo</option>
+            <option>Pestañas</option>
+            <option>Manicura</option>
+            <option>Pedicura</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="barbero" class="form-label">Selecciona un barbero/estilista</label>
+          <select class="form-select" id="barbero">
+            <option selected disabled>Elige una opción</option>
+            <option>Pablo Barbershop</option>
+            <option>Axel Barbershop</option>
+            <option>Joel Barbershop</option>
+            <option>Yendry Mora (Estilista)</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="Cédula / ID" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="Hora (ej. 10:30 AM)" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Confirmar Cita</button>
+      </form>
     </div>
 
-    <section>
-        <p><strong>Llegar 10 minutos antes de la cita</strong></p>
-        <form id="appointmentForm">
-            <input type="text" id="name" placeholder="Nombre" required>
+    <!-- Administración (opcional, solo para vos) -->
+    <div class="mt-4">
+      <h5 class="text-secondary">Administración</h5>
+      <button class="btn btn-outline-secondary me-2">Generar Reporte</button>
+      <button class="btn btn-outline-danger">Borrar Citas</button>
+    </div>
 
-            <select id="service" required>
-                <option disabled selected>Selecciona un servicio</option>
-                <option>Corte clásico</option>
-                <option>Corte Moderno</option>
-                <option>Corte y barba</option>
-                <option>Estilismo</option>
-                <option>Pestañas</option>
-                <option>Manicura</option>
-                <option>Pedicura</option>
-            </select>
+    <!-- Pie de página -->
+    <footer class="text-center mt-5 mb-4">
+      <small>© 2025 Salón de Belleza y Barbería Fusión - San Marcos de Tarrazú</small>
+    </footer>
+  </div>
 
-            <select id="barber" required>
-                <option disabled selected>Selecciona un barbero/estilista</option>
-                <option>Pablo Barbershop</option>
-                <option>Axel Barbershop</option>
-                <option>Joel Barbershop</option>
-                <option>Yendry Mora (Estilista)</option>
-            </select>
-
-            <input type="date" id="date" required>
-
-            <div class="time-container">
-                <select id="hour" required></select>
-                <select id="minute" required>
-                    <option>00</option><option>15</option><option>30</option><option>45</option>
-                </select>
-                <select id="ampm" required>
-                    <option>AM</option><option>PM</option>
-                </select>
-            </div>
-
-            <button type="submit">Confirmar Cita</button>
-        </form>
-    </section>
-
-    <section id="adminSection">
-        <h2>Administración</h2>
-        <button id="btnExcel">Generar Reporte</button>
-        <button id="btnBorrar">Borrar Citas</button>
-        <table id="citasTable">
-            <thead>
-                <tr><th>Nombre</th><th>Servicio</th><th>Barbero</th><th>Fecha</th><th>Hora</th></tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </section>
-
-    <script src="js/funciones.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="funciones.js"></script>
 </body>
 </html>
+
